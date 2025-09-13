@@ -1,3 +1,13 @@
+//
+// Name: Roman, Dylan
+// Project: 1
+// Due: 9-12-2025
+// Course: cs-2400-03-f25
+//
+// Description:
+// Implementation of LinkedBag. Uses singly linked list to store data in bag.
+//
+
 public class LinkedBag<T> implements BagInterface<T>{
 
     // Inner class only accessible by LinkedBag implementation. Stores data and next element in list.
