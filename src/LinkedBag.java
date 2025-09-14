@@ -26,25 +26,39 @@ public class LinkedBag<T> implements BagInterface<T>{
     }
 
     private Node head;
+    int size;
+
+    public LinkedBag() {
+        this.head = null;
+        this.size = 0;
+    }
 
     @Override
     public int getCurrentSize() {
-        return 0;
+        return size;
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return (size == 0);
     }
 
     @Override
     public boolean add(T item) {
-        return false;
+        head = new Node(item, head);
+        size++;
+        return true;
     }
 
     @Override
     public T remove() {
-        return null;
+         T output = head.data;
+         if (output != null) {
+             head.data = null;
+             head = head.next;
+         }
+
+         return output;
     }
 
     @Override
@@ -69,6 +83,20 @@ public class LinkedBag<T> implements BagInterface<T>{
 
     @Override
     public T[] toArray() {
-        return null;
+        @SuppressWarnings("unchecked")
+        T[] output = (T[]) new Object[size];
+
+        int index = 0;
+        Node currentNode = head;
+
+        while (currentNode != null) {
+            output[index] = currentNode.data;
+
+            // moves to next node
+            currentNode = currentNode.next;
+            index++;
+        }
+
+        return output;
     }
 }
