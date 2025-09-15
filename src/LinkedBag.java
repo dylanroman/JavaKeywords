@@ -33,6 +33,22 @@ public class LinkedBag<T> implements BagInterface<T>{
         this.size = 0;
     }
 
+    // Private helper method. If value is found, returns node containing value. If value is not found, returns null;
+    private Node getReferenceTo (T value) {
+       boolean found = false;
+       Node current = head;
+
+       while (!found && current != null) {
+           if (current.data.equals(value)) {
+               found =  true;
+           } else {
+               current = current.next;
+           }
+       }
+
+       return current;
+    }
+
     @Override
     public int getCurrentSize() {
         return size;
@@ -68,7 +84,9 @@ public class LinkedBag<T> implements BagInterface<T>{
 
     @Override
     public void clear() {
-
+        while(head != null) {
+            remove();
+        }
     }
 
     @Override
@@ -78,7 +96,7 @@ public class LinkedBag<T> implements BagInterface<T>{
 
     @Override
     public boolean contains(T anEntry) {
-        return false;
+        return getReferenceTo(anEntry) != null;
     }
 
     @Override
@@ -86,16 +104,9 @@ public class LinkedBag<T> implements BagInterface<T>{
         @SuppressWarnings("unchecked")
         T[] output = (T[]) new Object[size];
 
+        // Current location
+        Node current = head;
         int index = 0;
-        Node currentNode = head;
-
-        while (currentNode != null) {
-            output[index] = currentNode.data;
-
-            // moves to next node
-            currentNode = currentNode.next;
-            index++;
-        }
 
         return output;
     }

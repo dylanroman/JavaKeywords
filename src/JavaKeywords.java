@@ -8,7 +8,6 @@
 //
 //
 
-import javax.xml.transform.stream.StreamSource;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -27,19 +26,12 @@ public class JavaKeywords {
             keywords.add(inFile.next());
         }
 
-        while(!keywords.isEmpty()){
-            try {
-                System.out.println(keywords.remove());
-            } catch (NullPointerException e) {
-                break;
+        for(String token : args) {
+            if (keywords.contains(token)) {
+                System.out.printf("%s is a keyword\n", token);
+            } else {
+                System.out.printf("%s is not a keyword\n", token);
             }
-
-
         }
-
-//        String[] test = keywords.toArray();
-//        for (String word : test) {
-//            System.out.println(word);
-//        }
     }
 }
