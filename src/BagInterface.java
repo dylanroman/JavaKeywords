@@ -54,8 +54,8 @@ public interface BagInterface<T> {
     public boolean contains(T anEntry);
 
     /**
-     * @return array containing all elements of bag
+     * @return array containing all elements in bag
      */
-    public T[] toArray();
+    T[] toArray();
 
 }

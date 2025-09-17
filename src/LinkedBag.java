@@ -56,7 +56,7 @@ public class LinkedBag<T> implements BagInterface<T>{
 
     @Override
     public boolean isEmpty() {
-        return (size == 0);
+        return (head == null);
     }
 
     @Override
@@ -72,14 +72,24 @@ public class LinkedBag<T> implements BagInterface<T>{
          if (output != null) {
              head.data = null;
              head = head.next;
+             size--;
          }
 
          return output;
     }
 
+    // If data is not found in LinkedBag, return false. If data is found, move data to head node, remove head, return true;
     @Override
     public boolean remove(T anEntry) {
-        return false;
+        boolean found = false;
+        Node entry = getReferenceTo(anEntry);
+        if (entry != null) {
+            entry.data = head.data;
+            remove();
+            found = true;
+        }
+
+        return found;
     }
 
     @Override
@@ -103,11 +113,6 @@ public class LinkedBag<T> implements BagInterface<T>{
     public T[] toArray() {
         @SuppressWarnings("unchecked")
         T[] output = (T[]) new Object[size];
-
-        // Current location
-        Node current = head;
-        int index = 0;
-
         return output;
     }
 }

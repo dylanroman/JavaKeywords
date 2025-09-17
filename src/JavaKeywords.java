@@ -33,5 +33,14 @@ public class JavaKeywords {
                 System.out.printf("%s is not a keyword\n", token);
             }
         }
+
+
+        // Testing for unused methods
+        System.out.printf("%d Elements in Bag\n", keywords.getCurrentSize());
+        String word = "continue";
+        System.out.printf("Remove word 'continue' is %b\n" +
+                "Current number of entries in bag: %d\n" +
+                "Bag contains %s is %b",
+                keywords.remove(word), keywords.getCurrentSize(), word, keywords.contains(word));
     }
 }
