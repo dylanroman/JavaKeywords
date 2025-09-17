@@ -78,7 +78,6 @@ public class LinkedBag<T> implements BagInterface<T>{
          return output;
     }
 
-    // If data is not found in LinkedBag, return false. If data is found, move data to head node, remove head, return true;
     @Override
     public boolean remove(T anEntry) {
         boolean found = false;
@@ -101,7 +100,19 @@ public class LinkedBag<T> implements BagInterface<T>{
 
     @Override
     public int getFrequencyOf(T anEntry) {
-        return 0;
+        int frequency = 0;
+        int current = 0;
+        Node node = head;
+
+        while (node != null) {
+            if (node.data.equals(anEntry)) {
+                frequency++;
+            }
+            node = node.next;
+            current++;
+        }
+
+        return frequency;
     }
 
     @Override
@@ -113,6 +124,16 @@ public class LinkedBag<T> implements BagInterface<T>{
     public T[] toArray() {
         @SuppressWarnings("unchecked")
         T[] output = (T[]) new Object[size];
+
+        int current = 0;
+        Node node = head;
+
+        while (node != null && current < size) {
+            output[current] = node.data;
+            node = node.next;
+            current++;
+        }
+
         return output;
     }
 }
