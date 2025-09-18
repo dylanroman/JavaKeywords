@@ -28,9 +28,14 @@ public class LinkedBag<T> implements BagInterface<T>{
     private Node head;
     int size;
 
+    public LinkedBag(Node head, int size) {
+        this.head = head;
+        this.size = size;
+    }
+
+    /**No args constructor, sets head to null and size to 0*/
     public LinkedBag() {
-        this.head = null;
-        this.size = 0;
+        new LinkedBag(null, 0);
     }
 
     // Private helper method. If value is found, returns node containing value. If value is not found, returns null;
