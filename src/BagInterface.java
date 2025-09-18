@@ -8,7 +8,7 @@
 // Template for Bag ADT. Bag is an unordered collection of entries which allows duplicates.
 //
 
-
+/** An unordered collection of elements that allows duplicates.*/
 public interface BagInterface<T> {
     /** Gets the number of entries in the bag as an int.
      * @return Number of entries in the bag. */
@@ -41,6 +41,7 @@ public interface BagInterface<T> {
     public int getFrequencyOf(T anEntry);
 
     /** Checks if bag contains a given entry.
+     * @param anEntry The desired entry this method will search for.
      * @return Boolean if bag contains specific entry. */
     public boolean contains(T anEntry);
 
